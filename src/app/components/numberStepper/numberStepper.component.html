@@ -1,0 +1,15 @@
+<div style="display: flex; flex-direction: row; align-items: center;">
+    <div class="input-group">
+        <div class="input-group-prepend" *ngIf="prependLabel !== undefined">
+            <span class="input-group-text" id="basic-addon1">{{prependLabel}}</span>
+        </div>
+        <input type="number" class="form-control" id="{{id}}" [(ngModel)]="value" (ngModelChange)="valueChanged($event)" />
+        <div class="input-group-append" *ngIf="appendLabel !== undefined">
+            <span class="input-group-text" id="basic-addon2">{{appendLabel}}</span>
+        </div>
+    </div>
+    <div style="display: flex; flex-direction: column;padding-left: 8px;">
+        <i class="fas fa-chevron-up" style="cursor: pointer;" (click)="increaseValue()"></i>
+        <i class="fas fa-chevron-down" style="cursor: pointer;" (click)="decreaseValue()"></i>
+    </div>
+</div>

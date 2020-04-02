@@ -1,0 +1,8 @@
+.btn-group-toggle label {
+	background-color: white;
+	color: #007bff;
+}
+
+.btn-group-toggle label.active {
+	background-color: #007bff;
+}

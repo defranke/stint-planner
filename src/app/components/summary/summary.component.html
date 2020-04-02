@@ -1,0 +1,24 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Summary</h5>
+        <ul class="list-group">
+            <li class="list-group-item summary-list-item">
+                <span class="text-secondary">Race duration</span>
+                <span class="text-primary summary-list-value">{{raceDuration | prettyDuration}}</span>
+            </li>
+            <li class="list-group-item summary-list-item">
+                <span class="text-secondary">Total Laps</span>
+                <span class="text-primary summary-list-value">{{totalLaps}}</span>
+            </li>
+            <li class="list-group-item summary-list-item">
+                <span class="text-secondary">Required fuel</span>
+                <span class="text-primary summary-list-value">{{requiredFuel}} litres</span>
+            </li>
+            <li class="list-group-item summary-list-item">
+                <span class="text-secondary">Pitstops</span>
+                <span class="text-primary summary-list-value">{{numberOfPitstops}}</span>
+            </li>
+        </ul>
+
+    </div>
+</div>
