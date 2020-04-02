@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FuelCalculation } from 'src/app/services/FuelCalculation';
 import { Subscription } from 'rxjs';
-import { FuelResult } from '../model/fuelResult';
 
 @Component({
     selector: 'summary',
