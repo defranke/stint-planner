@@ -27,7 +27,7 @@
         </div>
 
         <div class="form-group row align-items-center" *ngIf="selectedType == types.Time">
-            <label for="exampleInputEmail1" class="col-sm-4 col-form-label">Race duration:</label>
+            <label for="raceDurationHour" class="col-sm-4 col-form-label">Race duration:</label>
             <div class="col-sm-4">
                 <number-stepper id="raceDurationHour" [(value)]="raceDurationHour" (valueChange)="calculate()"
                     appendLabel='hh' placeholder="00"></number-stepper>
@@ -40,7 +40,7 @@
         </div>
 
         <div class="form-group row align-items-center">
-            <label for="exampleInputEmail1" class="col-sm-4 col-form-label">with Formation lap</label>
+            <label class="col-sm-4 col-form-label">with Formation lap</label>
             <div class="col-sm-8">
                 <div class="btn-group btn-group-toggle p-1" data-toggle="buttons">
                     <label class="btn btn-primary" (click)="setWithFormationLap(true)"
@@ -59,7 +59,7 @@
 
 
         <div class="form-group row align-items-center">
-            <label for="exampleInputEmail1" class="col-sm-4 col-form-label">Laptime:</label>
+            <label for="averageLaptimeMinute" class="col-sm-4 col-form-label">Laptime:</label>
             <div class="col-sm-4">
                 <number-stepper id="averageLaptimeMinute" [(value)]="averageLaptimeMinute" (valueChange)="calculate()"
                     appendLabel='mm' placeholder="00">
@@ -73,7 +73,7 @@
         </div>
 
         <div class="form-group row align-items-center">
-            <label for="exampleInputEmail1" class="col-sm-4 col-form-label">Fuel per Lap:</label>
+            <label for="fuelPerLap" class="col-sm-4 col-form-label">Fuel per Lap:</label>
             <div class="col-sm-8">
                 <number-stepper id="fuelPerLap" [step]="0.1" [(value)]="fuelPerLap" (valueChange)="calculate()"
                     appendLabel='litres' placeholder="0.0" [inputMode]="'decimal'"></number-stepper>
@@ -81,7 +81,7 @@
         </div>
 
         <div class="form-group row align-items-center">
-            <label for="exampleInputEmail1" class="col-sm-4 col-form-label">Fuel tank capacity:</label>
+            <label for="fuelTankCapacity" class="col-sm-4 col-form-label">Fuel tank capacity:</label>
             <div class="col-sm-8">
                 <number-stepper id="fuelTankCapacity" [(value)]="fuelTankCapacity" (valueChange)="calculate()"
                     appendLabel='litres' placeholder="000">
