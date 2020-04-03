@@ -52,10 +52,10 @@ export class FuelCalculation {
     }
 
     getRequiredFuelForLastStint(): number {
-        return round(this.getRequiredFuel() % this.fuelTankCapacity, 1);
+        return round(this.getRequiredFuel() % (this.fuelTankCapacity - this.fuelPerLap), 1);
     }
 
     getNumberOfPitstops(): number {
-        return Math.floor(this.getRequiredFuel() / this.fuelTankCapacity);
+        return Math.floor(this.getRequiredFuel() / (this.fuelTankCapacity - this.fuelPerLap));
     }
 }

@@ -10,11 +10,13 @@ export class StintOptions {
 
 export class Stint {
     fuel: number;
+    refueling: number;
     fuelRemaining: number;
     laps: number;
     duration: number;
 
-    constructor(fuel: number, laps: number, duration: number, remainingFuel: number) {
+    constructor(refueling: number, fuel: number, laps: number, duration: number, remainingFuel: number) {
+        this.refueling = refueling;
         this.fuel = fuel;
         this.laps = laps;
         this.duration = duration;
@@ -46,17 +48,33 @@ export class StintCalculation {
         let remainingFuel = 0;
 
         for(let i = 0; i <= numberOfPitstops ; i++) {
-            let refuelAmount = stillRequiredFuel > maxFuelCapacity ? maxFuelCapacity : stillRequiredFuel;
+            console.log(i, stillRequiredFuel);
+            let refuelAmount;
             if(options.distributeEvenly) {
                 refuelAmount = requiredFuel / (numberOfPitstops + 1);
+            }else if(i === 0) {
+                refuelAmount = maxFuelCapacity;
+            }else if(stillRequiredFuel > (maxFuelCapacity - remainingFuel)) {
+                refuelAmount = maxFuelCapacity - remainingFuel;
+            }else {
+                refuelAmount = stillRequiredFuel;
             }
-            let usableAmount = (this.pitStops.length === 0 && fuelCalculation.withFormationLap) ? refuelAmount - fuelPerLap : refuelAmount;
-            usableAmount += remainingFuel;
+            let resultingFuel = refuelAmount + remainingFuel;
+
+            if(this.pitStops.length === 0 && fuelCalculation.withFormationLap) {
+                resultingFuel -= fuelPerLap; // subtract fuel for formation lap
+            }
+            let usableAmount = resultingFuel
+            if(i < numberOfPitstops) {
+                usableAmount -= fuelPerLap; // pit one lap before fuel is empty
+            }
+            
+
             const enoughForLaps = Math.floor(usableAmount / fuelPerLap);
             const stintDuration = enoughForLaps * averageLapTime;
-            remainingFuel = usableAmount - (enoughForLaps * fuelPerLap);
+            remainingFuel = resultingFuel - (enoughForLaps * fuelPerLap);
 
-            this.pitStops.push(new Stint(round(refuelAmount, 1), enoughForLaps, stintDuration, round(remainingFuel, 1)));
+            this.pitStops.push(new Stint(round(refuelAmount, 1), round(resultingFuel, 1), enoughForLaps, stintDuration, round(remainingFuel, 1)));
 
             stillRequiredFuel -= refuelAmount;
         }
