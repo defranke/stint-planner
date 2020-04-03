@@ -1,5 +1,5 @@
 <div style="display: flex; flex-direction: row; align-items: center" class="p-1">
-    <i class="fas fa-chevron-left" style="cursor: pointer;padding-right: 8px;" (click)="decreaseValue()"></i>
+    <i class="fas fa-chevron-left text-secondary" style="cursor: pointer;padding-right: 8px;" (click)="decreaseValue()"></i>
     <div class="input-group">
         <div class="input-group-prepend" *ngIf="prependLabel !== undefined">
             <span class="input-group-text" id="basic-addon1">{{prependLabel}}</span>
@@ -11,5 +11,5 @@
             <span class="input-group-text" id="basic-addon2">{{appendLabel}}</span>
         </div>
     </div>
-    <i class="fas fa-chevron-right" style="cursor: pointer;padding-left: 8px;" (click)="increaseValue()"></i>
+    <i class="fas fa-chevron-right text-secondary" style="cursor: pointer;padding-left: 8px;" (click)="increaseValue()"></i>
 </div>

@@ -7,7 +7,6 @@ import { PipeTransform, Pipe } from '@angular/core';
 export class NaNPrinterPipe implements PipeTransform {
 
     transform(value: number, label: string = "-") {
-        console.log(value);
         if(value === undefined || isNaN(value)) {
             return label;
         }

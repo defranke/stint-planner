@@ -3,12 +3,12 @@
         <div style="display: flex; justify-content: center;">
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
                 <label class="btn btn-primary" (click)="setRaceDistance(types.Laps)"
-                    [class.active]="selectedType == types.Laps">
+                    [class.active]="data.selectedType == types.Laps">
                     <input type="radio" name="laps" id="laps" autocomplete="off">
                     Lap based
                 </label>
                 <label class="btn btn-primary" (click)="setRaceDistance(types.Time)"
-                    [class.active]="selectedType == types.Time">
+                    [class.active]="data.selectedType == types.Time">
                     <input type="radio" name="time" id="time" autocomplete="off">
                     Time based
                 </label>
@@ -18,22 +18,22 @@
 
     <div class="card-body">
 
-        <div class="form-group row align-items-center" *ngIf="selectedType == types.Laps">
+        <div class="form-group row align-items-center" *ngIf="data.selectedType == types.Laps">
             <label for="numberOfLaps" class="col-sm-4 col-form-label">Laps</label>
             <div class="col-sm-8">
-                <number-stepper id="numberOfLaps" [(value)]="numberOfLaps" (valueChange)="calculate()"
+                <number-stepper id="numberOfLaps" [(value)]="data.numberOfLaps" (valueChange)="calculate()"
                     appendLabel='Laps' placeholder="00"></number-stepper>
             </div>
         </div>
 
-        <div class="form-group row align-items-center" *ngIf="selectedType == types.Time">
+        <div class="form-group row align-items-center" *ngIf="data.selectedType == types.Time">
             <label for="raceDurationHour" class="col-sm-4 col-form-label">Race duration:</label>
             <div class="col-sm-4">
-                <number-stepper id="raceDurationHour" [(value)]="raceDurationHour" (valueChange)="calculate()"
+                <number-stepper id="raceDurationHour" [(value)]="data.raceDurationHour" (valueChange)="calculate()"
                     appendLabel='hh' placeholder="00"></number-stepper>
             </div>
             <div class="col-sm-4">
-                <number-stepper id="raceDurationMinute" [(value)]="raceDurationMinute" (valueChange)="calculate()"
+                <number-stepper id="raceDurationMinute" [(value)]="data.raceDurationMinute" (valueChange)="calculate()"
                     appendLabel='mm' placeholder="00">
                 </number-stepper>
             </div>
@@ -44,12 +44,12 @@
             <div class="col-sm-8">
                 <div class="btn-group btn-group-toggle p-1" data-toggle="buttons">
                     <label class="btn btn-primary" (click)="setWithFormationLap(true)"
-                        [class.active]="withFormationLap">
+                        [class.active]="data.withFormationLap">
                         <input type="radio" name="laps" id="laps" autocomplete="off">
                         Yes
                     </label>
                     <label class="btn btn-primary" (click)="setWithFormationLap(false)"
-                        [class.active]="!withFormationLap">
+                        [class.active]="!data.withFormationLap">
                         <input type="radio" name="time" id="time" autocomplete="off">
                         No
                     </label>
@@ -61,12 +61,12 @@
         <div class="form-group row align-items-center">
             <label for="averageLaptimeMinute" class="col-sm-4 col-form-label">Laptime:</label>
             <div class="col-sm-4">
-                <number-stepper id="averageLaptimeMinute" [(value)]="averageLaptimeMinute" (valueChange)="calculate()"
+                <number-stepper id="averageLaptimeMinute" [(value)]="data.averageLaptimeMinute" (valueChange)="calculate()"
                     appendLabel='mm' placeholder="00">
                 </number-stepper>
             </div>
             <div class="col-sm-4">
-                <number-stepper id="averageLaptimeSeconds" [(value)]="averageLaptimeSeconds" (valueChange)="calculate()"
+                <number-stepper id="averageLaptimeSeconds" [(value)]="data.averageLaptimeSeconds" (valueChange)="calculate()"
                     appendLabel='ss' placeholder="00">
                 </number-stepper>
             </div>
@@ -75,7 +75,7 @@
         <div class="form-group row align-items-center">
             <label for="fuelPerLap" class="col-sm-4 col-form-label">Fuel per Lap:</label>
             <div class="col-sm-8">
-                <number-stepper id="fuelPerLap" [step]="0.1" [(value)]="fuelPerLap" (valueChange)="calculate()"
+                <number-stepper id="fuelPerLap" [step]="0.1" [(value)]="data.fuelPerLap" (valueChange)="calculate()"
                     appendLabel='litres' placeholder="0.0" [inputMode]="'decimal'"></number-stepper>
             </div>
         </div>
@@ -83,7 +83,7 @@
         <div class="form-group row align-items-center">
             <label for="fuelTankCapacity" class="col-sm-4 col-form-label">Fuel tank capacity:</label>
             <div class="col-sm-8">
-                <number-stepper id="fuelTankCapacity" [(value)]="fuelTankCapacity" (valueChange)="calculate()"
+                <number-stepper id="fuelTankCapacity" [(value)]="data.fuelTankCapacity" (valueChange)="calculate()"
                     appendLabel='litres' placeholder="000">
                 </number-stepper>
             </div>
