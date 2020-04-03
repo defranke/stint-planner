@@ -22,7 +22,7 @@
             <label for="numberOfLaps" class="col-sm-4 col-form-label">Laps</label>
             <div class="col-sm-8">
                 <number-stepper id="numberOfLaps" [(value)]="numberOfLaps" (valueChange)="calculate()"
-                    appendLabel='Laps'></number-stepper>
+                    appendLabel='Laps' placeholder="00"></number-stepper>
             </div>
         </div>
 
@@ -30,11 +30,11 @@
             <label for="exampleInputEmail1" class="col-sm-4 col-form-label">Race duration:</label>
             <div class="col-sm-4">
                 <number-stepper id="raceDurationHour" [(value)]="raceDurationHour" (valueChange)="calculate()"
-                    appendLabel='hh'></number-stepper>
+                    appendLabel='hh' placeholder="00"></number-stepper>
             </div>
             <div class="col-sm-4">
                 <number-stepper id="raceDurationMinute" [(value)]="raceDurationMinute" (valueChange)="calculate()"
-                    appendLabel='mm'>
+                    appendLabel='mm' placeholder="00">
                 </number-stepper>
             </div>
         </div>
@@ -62,12 +62,12 @@
             <label for="exampleInputEmail1" class="col-sm-4 col-form-label">Laptime:</label>
             <div class="col-sm-4">
                 <number-stepper id="averageLaptimeMinute" [(value)]="averageLaptimeMinute" (valueChange)="calculate()"
-                    appendLabel='mm'>
+                    appendLabel='mm' placeholder="00">
                 </number-stepper>
             </div>
             <div class="col-sm-4">
                 <number-stepper id="averageLaptimeSeconds" [(value)]="averageLaptimeSeconds" (valueChange)="calculate()"
-                    appendLabel='ss'>
+                    appendLabel='ss' placeholder="00">
                 </number-stepper>
             </div>
         </div>
@@ -76,7 +76,7 @@
             <label for="exampleInputEmail1" class="col-sm-4 col-form-label">Fuel per Lap:</label>
             <div class="col-sm-8">
                 <number-stepper id="fuelPerLap" [step]="0.1" [(value)]="fuelPerLap" (valueChange)="calculate()"
-                    appendLabel='litres'></number-stepper>
+                    appendLabel='litres' placeholder="0.0" [inputMode]="'decimal'"></number-stepper>
             </div>
         </div>
 
@@ -84,7 +84,7 @@
             <label for="exampleInputEmail1" class="col-sm-4 col-form-label">Fuel tank capacity:</label>
             <div class="col-sm-8">
                 <number-stepper id="fuelTankCapacity" [(value)]="fuelTankCapacity" (valueChange)="calculate()"
-                    appendLabel='litres'>
+                    appendLabel='litres' placeholder="000">
                 </number-stepper>
             </div>
         </div>

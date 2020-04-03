@@ -6,7 +6,10 @@ import { PipeTransform, Pipe } from '@angular/core';
 })
 export class PrettyDurationPipe implements PipeTransform {
 
-    transform(durationInSeconds: number): string {
+    transform(durationInSeconds: any): string {
+        if(typeof durationInSeconds !== 'number') {
+            return durationInSeconds;
+        }
         const hours = Math.floor(durationInSeconds / 3600);
         let remainingSeconds = durationInSeconds - hours * 3600;
         let minutes = Math.floor(remainingSeconds / 60)

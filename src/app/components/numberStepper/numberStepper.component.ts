@@ -7,7 +7,8 @@ import { round } from 'src/app/utils/numberUtils';
     templateUrl: './numberStepper.component.html'
 })
 export class NumberStepper {
-    @Input() id: String;
+    @Input() id: string;
+    @Input() inputMode: string = 'numeric';
 
     @Input() value: number = 0;
     @Output() valueChange = new EventEmitter<number>();
@@ -15,18 +16,19 @@ export class NumberStepper {
 
     @Input() prependLabel: string;
     @Input() appendLabel: string;
+    @Input() placeholder: string = '';
 
     valueChanged(newValue: number) {
         this.valueChange.emit(newValue);
     }
 
     increaseValue() {
-        const newValue = this.value + this.step;
+        const newValue = (this.value || 0) + this.step;
         this.valueChange.emit(round(newValue, 1));
     }
 
     decreaseValue() {
-        const newValue = this.value - this.step;
+        const newValue = Math.max(0, (this.value || 0) - this.step);
         this.valueChange.emit(round(newValue, 1));
     }
 }

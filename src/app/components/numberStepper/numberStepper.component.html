@@ -3,7 +3,9 @@
         <div class="input-group-prepend" *ngIf="prependLabel !== undefined">
             <span class="input-group-text" id="basic-addon1">{{prependLabel}}</span>
         </div>
-        <input type="number" step="{{step}}" class="form-control" id="{{id}}" [(ngModel)]="value" (ngModelChange)="valueChanged($event)" />
+        <input type="number" [attr.inputmode]="inputMode" class="form-control" id="{{id}}" 
+            step="{{step}}" [(ngModel)]="value" (ngModelChange)="valueChanged($event)"
+            [placeholder]="placeholder" min="0" />
         <div class="input-group-append" *ngIf="appendLabel !== undefined">
             <span class="input-group-text" id="basic-addon2">{{appendLabel}}</span>
         </div>

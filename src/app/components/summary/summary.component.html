@@ -6,20 +6,20 @@
         <ul class="list-group">
             <li class="list-group-item summary-list-item">
                 <span class="text-secondary">Race duration</span>
-                <span class="text-primary summary-list-value">{{raceDuration | prettyDuration}}</span>
+                <span class="text-primary summary-list-value">{{raceDuration | NaNPrinter | prettyDuration}}</span>
             </li>
             <li class="list-group-item summary-list-item">
                 <span class="text-secondary">Total Laps</span>
-                <span class="text-primary summary-list-value">{{totalLaps}}</span>
+                <span class="text-primary summary-list-value">{{totalLaps | NaNPrinter}}</span>
             </li>
             <li class="list-group-item summary-list-item">
                 <span class="text-secondary">Required fuel</span>
-                <span class="text-primary summary-list-value">{{requiredFuel}} litres</span>
+                <span class="text-primary summary-list-value">{{requiredFuel | NaNPrinter}} litres</span>
                 <span class="text-secondary description" *ngIf="requiredFuelForFormationLap > 0">(includes {{requiredFuelForFormationLap}} litres for pace lap)</span>
             </li>
             <li class="list-group-item summary-list-item">
                 <span class="text-secondary">Pitstops</span>
-                <span class="text-primary summary-list-value">{{numberOfPitstops}}</span>
+                <span class="text-primary summary-list-value">{{numberOfPitstops | NaNPrinter}}</span>
             </li>
         </ul>
 

@@ -15,17 +15,17 @@ export class DataInput {
     public types = RaceDistanceType;
 
     selectedType = 0;
-    numberOfLaps = 10;
+    numberOfLaps: number;
     withFormationLap = true;
 
-    raceDurationHour = 1;
-    raceDurationMinute = 0;
+    raceDurationHour: number;
+    raceDurationMinute: number;
 
-    averageLaptimeMinute = 1;
-    averageLaptimeSeconds = 0;
+    averageLaptimeMinute: number;
+    averageLaptimeSeconds: number;
 
-    fuelPerLap = 0;
-    fuelTankCapacity = 120;
+    fuelPerLap: number;
+    fuelTankCapacity: number;
 
     constructor(private fuelCalculation: FuelCalculation) {}
 
@@ -45,12 +45,22 @@ export class DataInput {
 
     calculate() {
         // TODO: validation
-        const averageLapTime = this.averageLaptimeMinute * 60 + this.averageLaptimeSeconds;
+        const averageLapTime = (this.averageLaptimeMinute || 0) * 60 + (this.averageLaptimeSeconds || 0);
         if(this.selectedType === RaceDistanceType.Laps) {
-            this.fuelCalculation.calculateForLaps(this.numberOfLaps, this.withFormationLap, averageLapTime, this.fuelPerLap, this.fuelTankCapacity);
+            this.fuelCalculation.calculateForLaps(
+                this.numberOfLaps, 
+                this.withFormationLap, 
+                averageLapTime, 
+                this.fuelPerLap || 0, 
+                this.fuelTankCapacity || 9999999);
         } else {
-            const raceDuration = (this.raceDurationHour * 60 + this.raceDurationMinute) * 60;
-            this.fuelCalculation.calculateForTime(raceDuration, this.withFormationLap, averageLapTime, this.fuelPerLap, this.fuelTankCapacity);
+            const raceDuration = ((this.raceDurationHour || 0) * 60 + (this.raceDurationMinute || 0)) * 60;
+            this.fuelCalculation.calculateForTime(
+                raceDuration, 
+                this.withFormationLap, 
+                averageLapTime, 
+                this.fuelPerLap, 
+                this.fuelTankCapacity || 9999999);
         }
     }
 
