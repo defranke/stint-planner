@@ -19,6 +19,7 @@ describe('FuelCalculation', () => {
 
         expect(fuelCalculation.raceDuration).toEqual(12 * 60);
         expect(fuelCalculation.getRequiredFuel()).toEqual(12);
+        expect(fuelCalculation.getRequiredFuelForLastStint()).toEqual(2);
         expect(fuelCalculation.getTotalLaps()).toEqual(4);
         expect(fuelCalculation.getNumberOfPitstops()).toEqual(1);
     });
@@ -33,6 +34,7 @@ describe('FuelCalculation', () => {
 
         expect(fuelCalculation.raceDuration).toEqual(12 * 60);
         expect(fuelCalculation.getRequiredFuel()).toEqual(15);
+        expect(fuelCalculation.getRequiredFuelForLastStint()).toEqual(5);
         expect(fuelCalculation.getTotalLaps()).toEqual(4);
         expect(fuelCalculation.getNumberOfPitstops()).toEqual(1);
     });
@@ -47,6 +49,7 @@ describe('FuelCalculation', () => {
 
         expect(fuelCalculation.raceDuration).toEqual(10 * 60);
         expect(fuelCalculation.getRequiredFuel()).toEqual(15);
+        expect(fuelCalculation.getRequiredFuelForLastStint()).toEqual(15);
         expect(fuelCalculation.getTotalLaps()).toEqual(5);
         expect(fuelCalculation.getNumberOfPitstops()).toEqual(0);
     });
@@ -61,6 +64,7 @@ describe('FuelCalculation', () => {
 
         expect(fuelCalculation.raceDuration).toEqual(10 * 60);
         expect(fuelCalculation.getRequiredFuel()).toEqual(18);
+        expect(fuelCalculation.getRequiredFuelForLastStint()).toEqual(1);
         expect(fuelCalculation.getTotalLaps()).toEqual(5);
         expect(fuelCalculation.getNumberOfPitstops()).toEqual(1);
     }); 
@@ -75,6 +79,7 @@ describe('FuelCalculation', () => {
 
         expect(fuelCalculation.raceDuration).toEqual(12 * 60);
         expect(fuelCalculation.getRequiredFuel()).toEqual(12);
+        expect(fuelCalculation.getRequiredFuelForLastStint()).toEqual(2);
         expect(fuelCalculation.getTotalLaps()).toEqual(4);
         expect(fuelCalculation.getNumberOfPitstops()).toEqual(2);
     });

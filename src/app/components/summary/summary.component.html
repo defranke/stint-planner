@@ -2,26 +2,32 @@
     <div class="card-header">
         <h5>Summary</h5>
     </div>
-    <div class="card-body">
-        <ul class="list-group">
-            <li class="list-group-item summary-list-item">
-                <span class="text-secondary">Race duration</span>
-                <span class="text-primary summary-list-value">{{raceDuration | NaNPrinter | prettyDuration}}</span>
-            </li>
-            <li class="list-group-item summary-list-item">
-                <span class="text-secondary">Total Laps</span>
-                <span class="text-primary summary-list-value">{{totalLaps | NaNPrinter}}</span>
-            </li>
-            <li class="list-group-item summary-list-item">
-                <span class="text-secondary">Required fuel</span>
-                <span class="text-primary summary-list-value">{{requiredFuel | NaNPrinter}} litres</span>
-                <span class="text-secondary description" *ngIf="requiredFuelForFormationLap > 0">(includes {{requiredFuelForFormationLap}} litres for pace lap)</span>
-            </li>
-            <li class="list-group-item summary-list-item">
-                <span class="text-secondary">Pitstops</span>
-                <span class="text-primary summary-list-value">{{numberOfPitstops | NaNPrinter}}</span>
-            </li>
-        </ul>
-
+    <div class="list-group  list-group-flush">
+        <div class="list-group-item summary-list-item">
+            <span class="text-secondary">Race duration</span>
+            <span class="text-primary summary-list-value">{{raceDuration | NaNPrinter | prettyDuration}}</span>
+        </div>
+        <div class="list-group-item summary-list-item">
+            <span class="text-secondary">Total Laps</span>
+            <span class="text-primary summary-list-value">{{totalLaps | NaNPrinter}}</span>
+        </div>
+        <div class="list-group-item summary-list-item">
+            <span class="text-secondary">Required fuel</span>
+            <span class="text-primary summary-list-value">{{requiredFuel | NaNPrinter}} litres</span>
+            <span class="text-secondary description" *ngIf="requiredFuelForFormationLap > 0">(includes
+                {{requiredFuelForFormationLap}} litres for pace lap)</span>
+        </div>
+        <div class="list-group-item summary-list-item">
+            <span class="text-secondary">Required fuel for final stint</span>
+            <span class="tPext-primary summary-list-value">{{requiredFuelForLastStint | NaNPrinter}} litres</span>
+        </div>
+        <div class="list-group-item summary-list-item">
+            <span class="text-secondary"># of Pitstops</span>
+            <span class="text-primary summary-list-value">{{numberOfPitstops | NaNPrinter}}</span>
+        </div>
+        <button type="button" class="list-group-item list-group-item-action text-center font-weight-bold bg-light"
+            [disabled]="!calculatePitstopsEnabled()" (click)="calculatePitstops()">
+            Calculate pitstops
+        </button>
     </div>
 </div>

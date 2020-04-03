@@ -9,12 +9,15 @@ import { NumberStepper } from './components/numberStepper/numberStepper.componen
 import { PrettyDurationPipe } from './pipes/prettyDuration.pipe';
 import { FuelCalculation } from './services/FuelCalculation';
 import { NaNPrinterPipe } from './pipes/naNPrinterPipe.pipe';
+import { PitStops } from './components/pitstops/pitstops.component';
+import { PitStopCalculation } from './services/PitStopCalculation';
 
 @NgModule({
   declarations: [
     AppComponent,
     DataInput,
     Summary,
+    PitStops,
     NumberStepper,
     PrettyDurationPipe,
     NaNPrinterPipe
@@ -24,7 +27,8 @@ import { NaNPrinterPipe } from './pipes/naNPrinterPipe.pipe';
     FormsModule
   ],
   providers: [
-    FuelCalculation
+    FuelCalculation,
+    PitStopCalculation
   ],
   bootstrap: [AppComponent]
 })

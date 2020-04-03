@@ -1,0 +1,31 @@
+<div class="card">
+    <div class="card-header">
+        <h5>Pit stops</h5>
+    </div>
+
+    <div class="card-body">
+        <div class="card-deck">
+            <div class="card" *ngFor="let stop of pitStops; index as i">
+                <div class="list-group list-group-flush">
+                    <div class="list-group-item active">Stop {{i + 1}}</div>
+
+                    <div class="list-group-item summary-list-item">
+                        <span class="text-secondary">Duration</span>
+                        <span class="text-primary summary-list-value">{{stop.duration | prettyDuration}}</span>
+                    </div>
+
+                    <div class="list-group-item summary-list-item">
+                        <span class="text-secondary">Laps</span>
+                        <span class="text-primary summary-list-value">{{stop.laps}} Laps</span>
+                    </div>
+
+                    <div class="list-group-item summary-list-item">
+                        <span class="text-secondary">Fuel</span>
+                        <span class="text-primary summary-list-value">{{stop.fuel}} litres</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

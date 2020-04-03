@@ -51,6 +51,10 @@ export class FuelCalculation {
         return round(this.getRequiredFuelForRace() + this.getRequiredFuelForFormationLap(), 1);
     }
 
+    getRequiredFuelForLastStint(): number {
+        return round(this.getRequiredFuel() % this.fuelTankCapacity, 1);
+    }
+
     getNumberOfPitstops(): number {
         return Math.floor(this.getRequiredFuel() / this.fuelTankCapacity);
     }
