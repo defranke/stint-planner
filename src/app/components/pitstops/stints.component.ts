@@ -1,31 +1,31 @@
 import { Component } from '@angular/core';
-import { PitStopCalculation, PitStop, PitstopOptions } from 'src/app/services/PitStopCalculation';
+import { StintCalculation, Stint, StintOptions } from 'src/app/services/StintCalculation';
 import { Subscription } from 'rxjs';
 import { FuelCalculation } from 'src/app/services/FuelCalculation';
 
 @Component({
-    selector: 'pit-stops',
-    templateUrl: './pitstops.component.html',
-    styleUrls: ['./pitstops.component.css']
+    selector: 'stints',
+    templateUrl: './stints.component.html',
+    styleUrls: ['./stints.component.css']
 })
 export class PitStops {
     _fuelCalcSubscription: Subscription;
     _subscription: Subscription;
 
-    pitStops: Array<PitStop> = [];
+    stints: Array<Stint> = [];
 
     optionsVisible: boolean = false;
-    pitStopOptions: PitstopOptions = new PitstopOptions();
+    stintOptions: StintOptions = new StintOptions();
 
     constructor(private fuelCalculation: FuelCalculation,
-        private pitStopCalculation: PitStopCalculation) {
+        private stintCalculation: StintCalculation) {
 
         this._fuelCalcSubscription = fuelCalculation.calculationChange.subscribe((result) => {
             this.calculatePitStops();
         });
 
-        this._subscription = pitStopCalculation.calculationChange.subscribe(() => {
-            this.pitStops = pitStopCalculation.pitStops;
+        this._subscription = stintCalculation.calculationChange.subscribe(() => {
+            this.stints = stintCalculation.pitStops;
         });
     }
 
@@ -35,7 +35,7 @@ export class PitStops {
     }
 
     calculatePitStops() {
-        this.pitStopCalculation.generatePitstops(this.fuelCalculation, this.pitStopOptions);
+        this.stintCalculation.generateStints(this.fuelCalculation, this.stintOptions);
     }
 
     ngOnInit() {
@@ -52,19 +52,19 @@ export class PitStops {
     }
 
     saveData() {
-        localStorage.setItem('pitStopOptions', JSON.stringify(this.pitStopOptions));
+        localStorage.setItem('stintOptions', JSON.stringify(this.stintOptions));
     }
 
     readData() {
-        const dataString = localStorage.getItem('pitStopOptions');
+        const dataString = localStorage.getItem('stintOptions');
         if (dataString) {
-            this.pitStopOptions = JSON.parse(dataString);
+            this.stintOptions = JSON.parse(dataString);
             this.calculatePitStops();
         }
     }
 
     resetOptions() {
-        this.pitStopOptions = new PitstopOptions();
+        this.stintOptions = new StintOptions();
         this.optionsChanged();
     }
 }

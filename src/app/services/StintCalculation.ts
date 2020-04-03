@@ -3,12 +3,12 @@ import { FuelCalculation } from './FuelCalculation';
 import { Subject, race } from 'rxjs';
 import { round } from '../utils/numberUtils';
 
-export class PitstopOptions {
+export class StintOptions {
     distributeEvenly: boolean;
     minNumberOfPitstops: number;
 }
 
-export class PitStop {
+export class Stint {
     fuel: number;
     fuelRemaining: number;
     laps: number;
@@ -23,11 +23,11 @@ export class PitStop {
 }
 
 @Injectable()
-export class PitStopCalculation {
-    pitStops: Array<PitStop> = [];
+export class StintCalculation {
+    pitStops: Array<Stint> = [];
     calculationChange: Subject<void> = new Subject<void>();
 
-    generatePitstops(fuelCalculation: FuelCalculation, options: PitstopOptions) {
+    generateStints(fuelCalculation: FuelCalculation, options: StintOptions) {
         
         const requiredFuel = fuelCalculation.getRequiredFuel();
         const maxFuelCapacity = fuelCalculation.fuelTankCapacity;
@@ -56,7 +56,7 @@ export class PitStopCalculation {
             const stintDuration = enoughForLaps * averageLapTime;
             remainingFuel = usableAmount - (enoughForLaps * fuelPerLap);
 
-            this.pitStops.push(new PitStop(round(refuelAmount, 1), enoughForLaps, stintDuration, round(remainingFuel, 1)));
+            this.pitStops.push(new Stint(round(refuelAmount, 1), enoughForLaps, stintDuration, round(remainingFuel, 1)));
 
             stillRequiredFuel -= refuelAmount;
         }

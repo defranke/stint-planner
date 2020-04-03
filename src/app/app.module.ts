@@ -9,8 +9,8 @@ import { NumberStepper } from './components/numberStepper/numberStepper.componen
 import { PrettyDurationPipe } from './pipes/prettyDuration.pipe';
 import { FuelCalculation } from './services/FuelCalculation';
 import { NaNPrinterPipe } from './pipes/naNPrinterPipe.pipe';
-import { PitStops } from './components/pitstops/pitstops.component';
-import { PitStopCalculation } from './services/PitStopCalculation';
+import { PitStops } from './components/pitstops/stints.component';
+import { StintCalculation } from './services/StintCalculation';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { PitStopCalculation } from './services/PitStopCalculation';
   ],
   providers: [
     FuelCalculation,
-    PitStopCalculation
+    StintCalculation
   ],
   bootstrap: [AppComponent]
 })

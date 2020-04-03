@@ -1,6 +1,6 @@
 <div class="card mb-5">
     <div class="card-header">
-        <h5>Pit stops</h5>
+        <h5>Stints</h5>
     </div>
 
     <div class="card-body">
@@ -12,10 +12,10 @@
             <div class="card card-body mb-3">
                 <div class="row">
                     <div class="col-4">
-                        <label for="distributeEvenly">Distribute pit stops evenly</label>
+                        <label for="distributeEvenly">Distribute stints evenly</label>
                     </div>
                     <div class="col-8">
-                        <input type="checkbox" id="distributeEvenly" [(ngModel)]="pitStopOptions.distributeEvenly" (ngModelChange)="optionsChanged()">
+                        <input type="checkbox" id="distributeEvenly" [(ngModel)]="stintOptions.distributeEvenly" (ngModelChange)="optionsChanged()">
                     </div>
                 </div>
                 <div class="row">
@@ -23,19 +23,10 @@
                         Minimum Number of Pit Stops:
                     </div>
                     <div class="col-8">
-                        <number-stepper id="minimumNumberOfPitstops" [(value)]="pitStopOptions.minNumberOfPitstops" (valueChange)="optionsChanged()"
+                        <number-stepper id="minimumNumberOfPitstops" [(value)]="stintOptions.minNumberOfPitstops" (valueChange)="optionsChanged()"
                         appendLabel='Stops' placeholder="0"></number-stepper>
                     </div>
                 </div>
-                <!-- <div class="row">
-                    <div class="col-4">
-                        Max stint time:
-                    </div>
-                    <div class="col-8">
-                        <number-stepper id="minimumNumberOfPitstops"  [(value)]="pitStopOptions.maxStintTime"  (valueChange)="optionsChanged()"
-                            appendLabel='min' placeholder="-"></number-stepper>
-                    </div>
-                </div> -->
 
                 <span (click)="resetOptions()">Reset</span>
                 
@@ -43,28 +34,28 @@
         </div>
 
         <div class="card-deck">
-            <div class="card pitstop-card" *ngFor="let stop of pitStops; index as i">
+            <div class="card pitstop-card" *ngFor="let stint of stints; index as i">
                 <div class="list-group list-group-flush">
-                    <div class="list-group-item active">Stop {{i + 1}}</div>
+                    <div class="list-group-item active">Stint {{i + 1}}</div>
 
                     <div class="list-group-item summary-list-item">
                         <span class="text-secondary">Refuel</span>
-                        <span class="text-primary summary-list-value">{{stop.fuel}} litres</span>
+                        <span class="text-primary summary-list-value">{{stint.fuel}} litres</span>
                     </div>
 
                     <div class="list-group-item summary-list-item">
                         <span class="text-secondary">Fuel remaining after stint</span>
-                        <span class="text-primary summary-list-value">{{stop.fuelRemaining}} litres</span>
+                        <span class="text-primary summary-list-value">{{stint.fuelRemaining}} litres</span>
                     </div>
 
                     <div class="list-group-item summary-list-item">
                         <span class="text-secondary">Estimated duration</span>
-                        <span class="text-primary summary-list-value">{{stop.duration | prettyDuration}}</span>
+                        <span class="text-primary summary-list-value">{{stint.duration | prettyDuration}}</span>
                     </div>
 
                     <div class="list-group-item summary-list-item">
                         <span class="text-secondary">Estimated laps</span>
-                        <span class="text-primary summary-list-value">{{stop.laps}} Laps</span>
+                        <span class="text-primary summary-list-value">{{stint.laps}} Laps</span>
                     </div>
                 </div>
             </div>
