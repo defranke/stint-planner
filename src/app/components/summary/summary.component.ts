@@ -18,9 +18,7 @@ export class Summary {
     requiredFuelForLastStint: number = 0;
     numberOfPitstops: number = 0;
 
-    constructor(private fuelCalculation: FuelCalculation,
-        private pitStopCalculation: PitStopCalculation) 
-        {
+    constructor(private fuelCalculation: FuelCalculation) {
         this._subscription = fuelCalculation.calculationChange.subscribe((result) => {
             this.raceDuration = fuelCalculation.raceDuration;
             this.requiredFuel = fuelCalculation.getRequiredFuel();
@@ -28,17 +26,7 @@ export class Summary {
             this.requiredFuelForLastStint = fuelCalculation.getRequiredFuelForLastStint();
             this.totalLaps = fuelCalculation.getTotalLaps();
             this.numberOfPitstops = fuelCalculation.getNumberOfPitstops();
-            
-            this.pitStopCalculation.generatePitstops(this.fuelCalculation);
         });
-    }
-
-    calculatePitstopsEnabled(): boolean {
-        return this.fuelCalculation.getRequiredFuel() > 0 && this.fuelCalculation.fuelPerLap > 0;
-    }
-
-    calculatePitstops() {
-        this.pitStopCalculation.generatePitstops(this.fuelCalculation);
     }
 
     ngOnDestroy() {

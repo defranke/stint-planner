@@ -25,9 +25,5 @@
             <span class="text-secondary"># of Pitstops</span>
             <span class="text-primary summary-list-value">{{numberOfPitstops | NaNPrinter}}</span>
         </div>
-        <button type="button" class="list-group-item list-group-item-action text-center font-weight-bold bg-light"
-            [disabled]="!calculatePitstopsEnabled()" (click)="calculatePitstops()">
-            Calculate pitstops
-        </button>
     </div>
 </div>

@@ -80,4 +80,9 @@ export class DataInput {
             this.calculate();
         }
     }
+
+    reset() {
+        this.data = new Data();
+        this.calculate();
+    }
 }

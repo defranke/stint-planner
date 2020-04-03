@@ -12,3 +12,8 @@
 .description {
     font-size: 0.7em;
 }
+
+.pitstop-card {
+    min-width: 200px;
+    margin-bottom: 8px;
+}
