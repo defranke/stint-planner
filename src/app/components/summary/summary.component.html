@@ -1,6 +1,8 @@
 <div class="card">
+    <div class="card-header">
+        <h5>Summary</h5>
+    </div>
     <div class="card-body">
-        <h5 class="card-title">Summary</h5>
         <ul class="list-group">
             <li class="list-group-item summary-list-item">
                 <span class="text-secondary">Race duration</span>
@@ -13,6 +15,7 @@
             <li class="list-group-item summary-list-item">
                 <span class="text-secondary">Required fuel</span>
                 <span class="text-primary summary-list-value">{{requiredFuel}} litres</span>
+                <span class="text-secondary description" *ngIf="requiredFuelForFormationLap > 0">(includes {{requiredFuelForFormationLap}} litres for pace lap)</span>
             </li>
             <li class="list-group-item summary-list-item">
                 <span class="text-secondary">Pitstops</span>

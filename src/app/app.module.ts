@@ -7,6 +7,7 @@ import { Summary } from './components/summary/summary.component';
 import { DataInput } from './components/dataInput/dataInput.component';
 import { NumberStepper } from './components/numberStepper/numberStepper.component';
 import { PrettyDurationPipe } from './components/pipes/prettyDuration.pipe';
+import { FuelCalculation } from './services/FuelCalculation';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { PrettyDurationPipe } from './components/pipes/prettyDuration.pipe';
     FormsModule
   ],
   providers: [
+    FuelCalculation
   ],
   bootstrap: [AppComponent]
 })

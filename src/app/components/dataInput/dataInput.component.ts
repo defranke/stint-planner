@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FuelCalculation } from 'src/app/services/FuelCalculation';
 
-enum RaceDistanceType {
+export enum RaceDistanceType {
     Laps = 0,
     Time = 1
 }
@@ -16,7 +16,7 @@ export class DataInput {
 
     selectedType = 0;
     numberOfLaps = 10;
-    withParadeLap = true;
+    withFormationLap = true;
 
     raceDurationHour = 1;
     raceDurationMinute = 0;
@@ -38,26 +38,20 @@ export class DataInput {
         this.calculate();
     }
 
-    setWithParadeLap(value: boolean) {
-        this.withParadeLap = value;
+    setWithFormationLap(value: boolean) {
+        this.withFormationLap = value;
         this.calculate();
     }
 
     calculate() {
         // TODO: validation
-        // TODO: run automatically when field changes
         const averageLapTime = this.averageLaptimeMinute * 60 + this.averageLaptimeSeconds;
-        let raceDuration = 0;
         if(this.selectedType === RaceDistanceType.Laps) {
-            let lapCount = this.numberOfLaps;
-            if(this.withParadeLap) {
-                lapCount += 1;
-            }
-            raceDuration = lapCount * averageLapTime;
+            this.fuelCalculation.calculateForLaps(this.numberOfLaps, this.withFormationLap, averageLapTime, this.fuelPerLap, this.fuelTankCapacity);
         } else {
-            raceDuration = (this.raceDurationHour * 60 + this.raceDurationMinute) * 60 + averageLapTime;
+            const raceDuration = (this.raceDurationHour * 60 + this.raceDurationMinute) * 60;
+            this.fuelCalculation.calculateForTime(raceDuration, this.withFormationLap, averageLapTime, this.fuelPerLap, this.fuelTankCapacity);
         }
-        this.fuelCalculation.calculate(raceDuration, averageLapTime, this.fuelPerLap, this.fuelTankCapacity);
     }
 
 }

@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { round } from 'src/app/utils/numberUtils';
 
 
 @Component({
@@ -20,10 +21,12 @@ export class NumberStepper {
     }
 
     increaseValue() {
-        this.valueChange.emit(this.value + this.step);
+        const newValue = this.value + this.step;
+        this.valueChange.emit(round(newValue, 1));
     }
 
     decreaseValue() {
-        this.valueChange.emit(this.value - this.step);
+        const newValue = this.value - this.step;
+        this.valueChange.emit(round(newValue, 1));
     }
 }

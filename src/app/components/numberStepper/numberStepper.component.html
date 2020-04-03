@@ -1,9 +1,9 @@
-<div style="display: flex; flex-direction: row; align-items: center;">
+<div style="display: flex; flex-direction: row; align-items: center" class="p-1">
     <div class="input-group">
         <div class="input-group-prepend" *ngIf="prependLabel !== undefined">
             <span class="input-group-text" id="basic-addon1">{{prependLabel}}</span>
         </div>
-        <input type="number" class="form-control" id="{{id}}" [(ngModel)]="value" (ngModelChange)="valueChanged($event)" />
+        <input type="number" step="{{step}}" class="form-control" id="{{id}}" [(ngModel)]="value" (ngModelChange)="valueChanged($event)" />
         <div class="input-group-append" *ngIf="appendLabel !== undefined">
             <span class="input-group-text" id="basic-addon2">{{appendLabel}}</span>
         </div>
