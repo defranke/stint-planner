@@ -37,9 +37,9 @@ export class StintCalculation {
         const averageLapTime = fuelCalculation.averageLapTime;
 
         this.pitStops = [];
-        if(fuelCalculation.getNumberOfPitstops() > 5) {
-            return;
-        }
+        // if(fuelCalculation.getNumberOfPitstops() > 5) {
+        //     return;
+        // }
 
         const minNumberOfPitstops = options.minNumberOfPitstops || 0;
         const numberOfPitstops = Math.max(minNumberOfPitstops, fuelCalculation.getNumberOfPitstops());
@@ -48,7 +48,6 @@ export class StintCalculation {
         let remainingFuel = 0;
 
         for(let i = 0; i <= numberOfPitstops ; i++) {
-            console.log(i, stillRequiredFuel);
             let refuelAmount;
             if(options.distributeEvenly) {
                 refuelAmount = requiredFuel / (numberOfPitstops + 1);
