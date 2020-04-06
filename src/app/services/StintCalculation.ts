@@ -50,7 +50,7 @@ export class StintCalculation {
         for(let i = 0; i <= numberOfPitstops ; i++) {
             let refuelAmount;
             if(options.distributeEvenly) {
-                refuelAmount = requiredFuel / (numberOfPitstops + 1);
+                refuelAmount = Math.min(requiredFuel / (numberOfPitstops + 1), maxFuelCapacity - remainingFuel);
             }else if(i === 0) {
                 refuelAmount = maxFuelCapacity;
             }else if(stillRequiredFuel > (maxFuelCapacity - remainingFuel)) {
