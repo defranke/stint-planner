@@ -52,6 +52,9 @@
             <div class="list-group-item summary-list-item">
                 <span class="text-secondary">Fuel needed</span>
                 <span class="text-primary summary-list-value">{{stint.requiredRefuel | NaNPrinter}} litres</span>
+                <span class="text-secondary description" *ngIf="i === 0 && fuelCalculation.withFormationLap">
+                    (includes {{fuelCalculation.fuelPerLap}} litres for formation lap)
+                </span>
             </div>
             <div class="list-group-item summary-list-item">
                 <span class="text-secondary">Remaining fuel after stint</span>

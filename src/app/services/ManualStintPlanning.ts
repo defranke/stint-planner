@@ -45,8 +45,8 @@ export class ManualStintPlanning {
     }
 
     updateCalculations(fuelCalculation: FuelCalculation) {
-        let fuelRemaningFromLastStint = 0;
-        this.data.stints.forEach((s, index) => {
+        let fuelRemaningFromLastStint = fuelCalculation.withFormationLap ? -fuelCalculation.fuelPerLap : 0;
+        this.data.stints.forEach((s) => {
             s.requiredRefuel = round(s.targetFuel - fuelRemaningFromLastStint, 2);
             s.fuelRemaining = round(s.targetFuel - s.targetLaps * fuelCalculation.fuelPerLap, 2);
             s.duration = s.targetLaps * fuelCalculation.averageLapTime;
@@ -58,18 +58,26 @@ export class ManualStintPlanning {
     }
 
     getTotalDuration(): number {
-        return round(this.data.stints.map(s => s.duration).filter(s => !isNaN(s)).reduce((agg, cur) => agg + cur, 0), 2);
+        return round(this.data.stints
+            .map(s => s.duration)
+            .filter(s => !isNaN(s))
+            .reduce((agg, cur) => agg + cur, 0), 2);
     }
 
     getTotalFuel(): number {
-        return round(this.data.stints.map(s => s.requiredRefuel).filter(s => !isNaN(s)).reduce((agg, cur) => agg + cur, 0), 2);
+        return round(this.data.stints
+            .map(s => s.requiredRefuel)
+            .filter(s => !isNaN(s))
+            .reduce((agg, cur) => agg + cur, 0), 2);
     }
 
     getDriverStintTimes(): Map<number, number> {
         let driverStintTimes = new Map<number, number>();
         this.data.stints.forEach(s => {
             const value = driverStintTimes.get(s.driver) || 0;
-            driverStintTimes.set(s.driver, value + s.duration);
+            if(!isNaN(value)) {
+                driverStintTimes.set(s.driver, value + s.duration);
+            }
         });
         console.log(driverStintTimes);
         return driverStintTimes;

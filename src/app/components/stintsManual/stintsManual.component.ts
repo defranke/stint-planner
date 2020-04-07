@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ManualStintPlanning } from 'src/app/services/ManualStintPlanning';
 import { FuelCalculation } from 'src/app/services/FuelCalculation';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'stints-manual',
@@ -8,11 +9,20 @@ import { FuelCalculation } from 'src/app/services/FuelCalculation';
     styleUrls: ['./stintsManual.component.css']
 })
 export class StintsManual {
+    _fuelCalcSubscription: Subscription;
 
-    constructor(public stintPlanning: ManualStintPlanning, private fuelCalculation: FuelCalculation) {}
+    constructor(public stintPlanning: ManualStintPlanning, public fuelCalculation: FuelCalculation) {
+        this._fuelCalcSubscription = fuelCalculation.calculationChange.subscribe((result) => {
+            this.stintPlanning.updateCalculations(this.fuelCalculation);
+        });
+    }
 
     ngOnInit() {
         this.stintPlanning.read();
+    }
+
+    ngOnDestroy() {
+        this._fuelCalcSubscription.unsubscribe();
     }
 
     addStint() {
