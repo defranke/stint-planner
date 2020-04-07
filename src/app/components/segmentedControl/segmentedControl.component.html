@@ -1,0 +1,7 @@
+<div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <label class="btn btn-primary" *ngFor="let option of options" (click)="selectValue(option)"
+        [class.active]="option.value == value">
+        <input type="radio" name="{{option.id}}" id="{{option.id}}" autocomplete="off">
+        {{option.label}}
+    </label>
+</div>

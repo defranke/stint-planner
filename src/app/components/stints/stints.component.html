@@ -1,0 +1,11 @@
+<div class="card mb-5">
+    <div class="card-header">
+        <segmented-control [options]="stintMode" [(value)]="selectedStintMode" (valueChange)="saveData()"></segmented-control>
+    </div>
+
+    <div class="card-body">
+        <stints-automatic *ngIf="selectedStintMode === modes.Automatic"></stints-automatic>
+        <stints-manual *ngIf="selectedStintMode === modes.Manual"></stints-manual>
+    </div>
+
+</div>

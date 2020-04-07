@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { FuelCalculation } from 'src/app/services/FuelCalculation';
+import { SegmentedControlOption } from '../segmentedControl/segmentedControl.component';
 
 export enum RaceDistanceType {
     Laps = 0,
@@ -7,7 +8,7 @@ export enum RaceDistanceType {
 }
 
 class Data {
-    selectedType = 0;
+    selectedType: RaceDistanceType = RaceDistanceType.Laps;
     numberOfLaps: number;
     withFormationLap = true;
 
@@ -28,6 +29,14 @@ class Data {
 })
 export class DataInput {
     public types = RaceDistanceType;
+    public typeOptions = [
+        new SegmentedControlOption('laps', 'Lap based', RaceDistanceType.Laps),
+        new SegmentedControlOption('time', 'Time based', RaceDistanceType.Time),
+    ];
+    public withFormationLapOptions = [
+        new SegmentedControlOption('withFormationLap', 'Yes', true),
+        new SegmentedControlOption('noFormationLap', 'No', false),
+    ]
 
     data: Data = new Data();
 

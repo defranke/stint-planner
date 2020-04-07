@@ -1,0 +1,77 @@
+<b>Summary</b><br />
+<table>
+<tr>
+    <td>Duration:</td>
+    <td style="padding-left:8px;">{{stintPlanning.getTotalDuration() | NaNPrinter | prettyDuration}}</td>
+</tr>
+<tr>
+    <td>Fuel:</td>
+    <td style="padding-left:8px;">{{stintPlanning.getTotalFuel() | NaNPrinter}} litres</td>
+</tr>
+</table>
+<b>Driver stints:</b>
+<ul>
+    <li *ngFor="let driver of stintPlanning.getDriverStintTimes() | keyvalue">
+        Driver {{driver.key}}: {{driver.value | NaNPrinter | prettyDuration}}
+    </li>
+</ul>
+
+<div>
+
+    <div class="card pitstop-card" style="width: 320px; float:left; margin: 5px;"
+        *ngFor="let stint of stintPlanning.data.stints; index as i">
+        <div class="list-group list-group-flush">
+            <div class="list-group-item active">
+                Stint {{i+1}}
+                <i class="far fa-trash-alt" style="cursor: pointer; float: right;padding-left: 8px;" (click)="removeStint(i)"></i>
+                <i class="far fa-clone" style="cursor: pointer; float: right;" (click)="cloneStint(i)"></i>
+            </div>
+
+            <div class="list-group-item summary-list-item">
+                <span class="text-secondary">Target # of laps</span>
+                <div style="display: flex; flex-direction: row; align-items: center;">
+                    <number-stepper [(value)]="stint.targetLaps" (valueChange)="updateCalculations()"></number-stepper>
+                    <i class="fas fa-magic text-secondary" (click)="autofillTargetLaps(i)"></i>
+                </div>
+            </div>
+
+            <div class="list-group-item summary-list-item">
+                <span class="text-secondary">Estimated duration</span>
+                <span class="text-primary summary-list-value">{{stint.duration | NaNPrinter | prettyDuration}}</span>
+            </div>
+
+            <div class="list-group-item summary-list-item">
+                <span class="text-secondary">Target fuel level</span>
+                <div style="display: flex; flex-direction: row; align-items: center;">
+                    <number-stepper [(value)]="stint.targetFuel" (valueChange)="updateCalculations()"
+                        appendLabel="litres"></number-stepper>
+                    <i class="fas fa-magic text-secondary" (click)="autofillTargetFuel(i)"></i>
+                </div>
+            </div>
+
+            <div class="list-group-item summary-list-item">
+                <span class="text-secondary">Fuel needed</span>
+                <span class="text-primary summary-list-value">{{stint.requiredRefuel | NaNPrinter}} litres</span>
+            </div>
+            <div class="list-group-item summary-list-item">
+                <span class="text-secondary">Remaining fuel after stint</span>
+                <span class="text-primary summary-list-value">{{stint.fuelRemaining | NaNPrinter}} litres</span>
+            </div>
+
+            <div class="list-group-item summary-list-item">
+                <span class="text-secondary">Driver</span>
+                <number-stepper [(value)]="stint.driver" (valueChange)="updateCalculations()"></number-stepper>
+            </div>
+
+            <div class="list-group-item summary-list-item">
+                <span class="text-secondary">Notes</span>
+                <textarea class="form-control" rows="3" [(ngModel)]="stint.notes"></textarea>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="card pitstop-card" style="width: 320px; height: 320px; float:left; margin: 5px;" (click)="addStint()">
+        <i class="fas fa-plus-circle text-secondary" style="margin: auto; font-size: 120px;"></i>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+.summary-list-item {
+    display: flex; 
+    flex-direction: column;
+}
+
+.summary-list-value {
+    font-size: 1.8em; 
+    width:100%;
+    flex-grow: 1;
+}
+
+.description {
+    font-size: 0.7em;
+}
+
+.pitstop-card {
+    min-width: 200px;
+    margin-bottom: 8px;
+}

@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { StintCalculation, Stint, StintOptions } from 'src/app/services/StintCalculation';
 import { Subscription } from 'rxjs';
 import { FuelCalculation } from 'src/app/services/FuelCalculation';
+import { SegmentedControlOption } from '../segmentedControl/segmentedControl.component';
 
 @Component({
-    selector: 'stints',
-    templateUrl: './stints.component.html',
-    styleUrls: ['./stints.component.css']
+    selector: 'stints-automatic',
+    templateUrl: './stintsAutomatic.component.html',
+    styleUrls: ['./stintsAutomatic.component.css']
 })
-export class PitStops {
+export class StintsAutomatic {
     _fuelCalcSubscription: Subscription;
     _subscription: Subscription;
 

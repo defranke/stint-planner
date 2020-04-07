@@ -9,16 +9,25 @@ import { NumberStepper } from './components/numberStepper/numberStepper.componen
 import { PrettyDurationPipe } from './pipes/prettyDuration.pipe';
 import { FuelCalculation } from './services/FuelCalculation';
 import { NaNPrinterPipe } from './pipes/naNPrinterPipe.pipe';
-import { PitStops } from './components/pitstops/stints.component';
 import { StintCalculation } from './services/StintCalculation';
+import { SegmentedControl } from './components/segmentedControl/segmentedControl.component';
+import { Stints } from './components/stints/stints.component';
+import { StintsAutomatic } from './components/stintsAutomatic/stintsAutomatic.component';
+import { StintsManual } from './components/stintsManual/stintsManual.component';
+import { ManualStintPlanning } from './services/ManualStintPlanning';
 
 @NgModule({
   declarations: [
     AppComponent,
     DataInput,
     Summary,
-    PitStops,
+    Stints,
+    StintsAutomatic,
+    StintsManual,
+
     NumberStepper,
+    SegmentedControl,
+
     PrettyDurationPipe,
     NaNPrinterPipe
   ],
@@ -28,7 +37,8 @@ import { StintCalculation } from './services/StintCalculation';
   ],
   providers: [
     FuelCalculation,
-    StintCalculation
+    StintCalculation,
+    ManualStintPlanning
   ],
   bootstrap: [AppComponent]
 })

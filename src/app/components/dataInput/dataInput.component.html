@@ -1,21 +1,13 @@
 <div class="card">
     <div class="card-header">
         <div style="display: flex; justify-content: center;">
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-primary" (click)="setRaceDistance(types.Laps)"
-                    [class.active]="data.selectedType == types.Laps">
-                    <input type="radio" name="laps" id="laps" autocomplete="off">
-                    Lap based
-                </label>
-                <label class="btn btn-primary" (click)="setRaceDistance(types.Time)"
-                    [class.active]="data.selectedType == types.Time">
-                    <input type="radio" name="time" id="time" autocomplete="off">
-                    Time based
-                </label>
-            </div>
+
+            <segmented-control [(value)]="data.selectedType" (valueChange)="calculate()" [options]="typeOptions">
+            </segmented-control>
         </div>
-        
-        <div class="text-secondary" style="cursor: pointer; position: absolute; right: 8px; top: 16px;" (click)="reset()">Reset</div>
+
+        <div class="text-secondary" style="cursor: pointer; position: absolute; right: 8px; top: 16px;"
+            (click)="reset()">Reset</div>
     </div>
 
     <div class="card-body">
@@ -44,18 +36,7 @@
         <div class="form-group row align-items-center">
             <label class="col-sm-4 col-form-label">with Formation lap</label>
             <div class="col-sm-8">
-                <div class="btn-group btn-group-toggle p-1" data-toggle="buttons">
-                    <label class="btn btn-primary" (click)="setWithFormationLap(true)"
-                        [class.active]="data.withFormationLap">
-                        <input type="radio" name="laps" id="laps" autocomplete="off">
-                        Yes
-                    </label>
-                    <label class="btn btn-primary" (click)="setWithFormationLap(false)"
-                        [class.active]="!data.withFormationLap">
-                        <input type="radio" name="time" id="time" autocomplete="off">
-                        No
-                    </label>
-                </div>
+                <segmented-control [options]="withFormationLapOptions" [(value)]="data.withFormationLap" (valueChange)="calculate()"></segmented-control>
             </div>
         </div>
 
@@ -63,13 +44,13 @@
         <div class="form-group row align-items-center">
             <label for="averageLaptimeMinute" class="col-sm-4 col-form-label">Laptime:</label>
             <div class="col-sm-4">
-                <number-stepper id="averageLaptimeMinute" [(value)]="data.averageLaptimeMinute" (valueChange)="calculate()"
-                    appendLabel='mm' placeholder="00">
+                <number-stepper id="averageLaptimeMinute" [(value)]="data.averageLaptimeMinute"
+                    (valueChange)="calculate()" appendLabel='mm' placeholder="00">
                 </number-stepper>
             </div>
             <div class="col-sm-4">
-                <number-stepper id="averageLaptimeSeconds" [(value)]="data.averageLaptimeSeconds" (valueChange)="calculate()"
-                    appendLabel='ss' placeholder="00">
+                <number-stepper id="averageLaptimeSeconds" [(value)]="data.averageLaptimeSeconds"
+                    (valueChange)="calculate()" appendLabel='ss' placeholder="00">
                 </number-stepper>
             </div>
         </div>
